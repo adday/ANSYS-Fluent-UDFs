@@ -1,4 +1,4 @@
-# ANSYS-Fluent-UDFs
+# ANSYS-FLUENT-UDFs
 
 Folder contents:
 
