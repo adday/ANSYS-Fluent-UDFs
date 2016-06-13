@@ -1,0 +1,38 @@
+
+COMPILIING/HOOKING UDFs:
+
+NOTE: 	This procedure does not work for all UDFs. See the FLUENT manual for 
+		specifics on hooking procedure UDF macro.
+
+1. Write UDF and save as .c file
+
+2. Copy .c source file to working FLUENT directory (same containing .cas and .dat) 
+
+3. Select SETUP from ANSYS WorkBench
+
+4. Select USER DEFINED -> FUNCTIONS -> COMPILED...
+
+5. Add UDFs to compile and click "Build"
+
+6. Check if successful compilation
+
+7. If successful then click "Load" to load library
+
+8. Verify functions that are loaded
+
+9. To "hook" select FUNCTION HOOKS using simple hook (only available for specified macros)
+
+10. Click "Edit" next to macro name of desired UDF to hook
+
+11. Select name of UDF to hook
+
+
+NOTE: 	At this stage it is best to remove libraries and function hooks at end of 
+		FLUENT session to prevent saving of metadata to project folder. This could
+		cause errors if the UDFs are changed or removed between FLUENT sessions.
+		
+		FLUENT UDFs are compiled based on options when SETUP launched and therefore
+		those compiled in parallel will not run in serial. Those compiled in serial
+		will not run in parallel.
+		
+		
