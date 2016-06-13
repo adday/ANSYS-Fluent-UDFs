@@ -1,0 +1,13 @@
+FLUENT Data Types:
+
+face_t : int that identifies a particular face within a face thread
+
+cell_t : int that indentifies a particular cell within a cell thread
+
+Thread : structure that stores data that is common to the group of cells/faces
+		 it represents
+		 
+Domain : structure data type that stores data associated with a collection of 
+		 node/face/cell threads in a mesh
+		 
+
