@@ -1,0 +1,11 @@
+Contains files related to ADJUST_PARTICLE_POS_VEL.c UDF.
+
+UDF adjusts the particle velocity and position based on the current velocity and position. 
+
+Current method not ideal but an example of some things that are possible.
+
+A more accurate and dynamic model can be developed utilizing same parameters.
+
+Thought:  Original idea was to adjust particle velocity by applying force based on surrounding density. 
+          Would this cause problems because there are large air pockets present in the water phase that 
+          would misrepresent particles in this phase as being in the air phase?
