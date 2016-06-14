@@ -6,7 +6,7 @@ Tracks the number of particles that have a density below a threshold.
 ******************************************************************************/
 
 
-DEFINE_DPM_SCALAR_UPDATE(particle_reflect_on_position,cell,thread,initialize,p)
+DEFINE_DPM_SCALAR_UPDATE(adjust_particle_pos_vel,cell,thread,initialize,p)
 {	
 	if (P_POS(p)[1] > 0.15)
 	{
