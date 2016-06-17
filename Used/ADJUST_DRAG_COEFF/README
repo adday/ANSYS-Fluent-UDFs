@@ -1,4 +1,3 @@
 This function attempts to keep the particles in the liquid phase by applying a coefficient 
 of friction that was scaled by a factor that is proportional to the volume fraction of water.
 
-The DEFINE_DPM_DRAG has been tested and did not show great results, see image. 
