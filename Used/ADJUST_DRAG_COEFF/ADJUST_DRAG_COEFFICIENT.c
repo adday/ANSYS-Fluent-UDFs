@@ -17,7 +17,7 @@ DEFINE_DPM_SCALAR_UPDATE(modify_drag_by_velocity,c,t,init,p)
 	// scale velocities
 	P_VEL(p)[0] = P_VEL(p)[0] * alpha_q;
 	P_VEL(p)[1] = P_VEL(p)[1] * alpha_q;
-	P_VEL(p)[2] = P_VEL(p)[2] *	alpha_q;
+	P_VEL(p)[2] = P_VEL(p)[2] * alpha_q;
 	 
 	C_U(c,t) *= alpha_q;
 	C_V(c,t) *= alpha_q;
@@ -34,18 +34,11 @@ DEFINE_DPM_DRAG(modify_drag_coeff, Re, p)
 	real w, drag_force, alpha_q;
 	
 	if (Re < 0.01)
-	{
 		drag_force = 18.0;
-	}
 	else if (Re < 20.0)
-	{
-		w = log10(Re);
-		drag_force = 18.0 + 2.367 * pow(Re, 0.82 - 0.05 * w);
-	}
+		drag_force = 18.0 + 2.367 * pow(Re, 0.82 - 0.05 * log10(Re));
 	else
-	{
 		drag_force = 18.0 + 3.483 * pow(Re, 0.6305);
-	}
 	
 	cell_t c;
 	Thread *t;
