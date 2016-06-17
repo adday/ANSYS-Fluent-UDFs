@@ -43,9 +43,9 @@ DEFINE_DPM_DRAG(modify_drag_coeff, Re, p)
 	cell_t c;
 	Thread *t;
 
+	//obtain volume of fraction of liquid
 	c = P_CELL(p);
 	t = THREAD_SUB_THREAD(P_CELL_THREAD(p),0);
-
 	alpha_q = C_VOF(c,t);
 		
 	return drag_force * alpha_q;
