@@ -4,8 +4,8 @@
 UDF to record information on density of cell containing particle.
 Tracks the number of particles that have a density below a threshold.
 ******************************************************************************/
-
-#define fluid_level 0.051625
+//cuboid height = 0.10325
+#define fluid_level 0.10325 //filled cuboid
 DEFINE_DPM_SCALAR_UPDATE(adjust_particle_pos_vel,cell,thread,initialize,p)
 {	
 	if (P_POS(p)[1] > fluid_level)
