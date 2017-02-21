@@ -31,7 +31,7 @@ DEFINE_DPM_SCALAR_UPDATE(modify_drag_by_velocity, c, t, init,p)
 
 
 /******************************************************************************
-Modify particle drag coefficient as function of 
+Modify particle drag coefficient as function of volume of fluid in a cell.
 ******************************************************************************/
 
 DEFINE_DPM_DRAG(modify_drag_coeff, Re, p)
