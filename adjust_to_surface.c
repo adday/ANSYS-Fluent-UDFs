@@ -83,9 +83,12 @@ void adjust_particle(Tracked_Particle * p){
 	/* compute cosine factor and direction change */
 	real cos = (a*x0 + b*y0 + c*z0) / sqrt(pow(a,2) + pow(b,2) + pow(c,2) + pow(x0,2) + pow(y0,2) + pow(z0,2) );
 	/* adjust particle velocities and direction*/
-	real vel_x = -(b*(a*y0 - b*x0))/(pow(a,2) + pow(b,2) + pow(c,2)) - (c*(a*z0 - c*x0))/(pow(a,2) + pow(b,2) + pow(c,2)) - (a*(a*x0 + b*y0 + c*z0))/(pow(a,2) + pow(b,2) + pow(c,2));
-	real vel_y = ((a*y0 - b*x0)*(pow(a,2) + pow(c,2)))/(pow(a,3) + a*pow(b,2) + a*pow(c,2)) - (b*(a*x0 + b*y0 + c*z0))/(pow(a,2) + pow(b,2) + pow(c,2)) - (b*c*(a*z0 - c*x0))/(pow(a,3) + a*pow(b,2) + a*pow(c,2));
-	real vel_z = ((a*z0 - c*x0)*(pow(a,2) + pow(b,2)))/(pow(a,3) + a*pow(b,2) + a*pow(c,2)) - (c*(a*x0 + b*y0 + c*z0))/(pow(a,2) + pow(b,2) + pow(c,2)) - (b*c*(a*y0 - b*x0))/(pow(a,3) + a*pow(b,2) + a*pow(c,2));
+	real vel_x = -(b*(a*y0 - b*x0))/(pow(a,2) + pow(b,2) + pow(c,2)) - (c*(a*z0 - c*x0))/(pow(a,2) +
+			pow(b,2) + pow(c,2)) - (a*(a*x0 + b*y0 + c*z0))/(pow(a,2) + pow(b,2) + pow(c,2));
+	real vel_y = ((a*y0 - b*x0)*(pow(a,2) + pow(c,2)))/(pow(a,3) + a*pow(b,2) + a*pow(c,2)) - 
+		(b*(a*x0 + b*y0 + c*z0))/(pow(a,2) + pow(b,2) + pow(c,2)) - (b*c*(a*z0 - c*x0))/(pow(a,3) + a*pow(b,2) + a*pow(c,2));
+	real vel_z = ((a*z0 - c*x0)*(pow(a,2) + pow(b,2)))/(pow(a,3) + a*pow(b,2) + a*pow(c,2)) - 
+		(c*(a*x0 + b*y0 + c*z0))/(pow(a,2) + pow(b,2) + pow(c,2)) - (b*c*(a*y0 - b*x0))/(pow(a,3) + a*pow(b,2) + a*pow(c,2));
 	/* scale velocity magnitudes by sin(v_dir < N) */
 	real sin = sqrt(1-pow(cos,2));
 	P_VEL(p)[0] = vel_x * sin;
