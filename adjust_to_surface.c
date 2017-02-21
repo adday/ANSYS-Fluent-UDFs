@@ -2,7 +2,7 @@
 
 #define num_cells 1000 /* greater than number cells in interface region to be tracked */
 #define up_lim 0.15     /* upper limit of interface region */
-#define low_lim	0.12		/* lower limit of interface region */
+#define low_lim	0.12	/* lower limit of interface region */
 #define delta 0.001
 #define len(x) (sizeof(x) / sizeof((x)[0]))
 
