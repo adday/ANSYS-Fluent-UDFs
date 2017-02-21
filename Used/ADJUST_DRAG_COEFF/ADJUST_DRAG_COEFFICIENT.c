@@ -1,26 +1,29 @@
 #include "udf.h"
 
 /******************************************************************************
- UDFs for modifying particle drag force as function of volume fraction
- of water in cell by altering velocities.  
+ Modify particle drag force as function of volume fraction of water in cell.  
 ******************************************************************************/
 
-DEFINE_DPM_SCALAR_UPDATE(modify_drag_by_velocity,c,t,init,p)
+DEFINE_DPM_SCALAR_UPDATE(modify_drag_by_velocity, c, t, init,p)
 {
 	real alpha_q;
 	
 	// obtain volume of fraction of water
 	c = P_CELL(p);
-	// dependent on calculation setup(0- primary phase 1-secondary phase)
+	
+	// dependent on calculation setup (0- primary phase 1-secondary phase)
 	t = THREAD_SUB_THREAD(P_CELL_THREAD(p),1);
 	alpha_q = C_VOF(c,t);
-printf("\nVOF: %g\n",alpha_q);fflush(stdout);
+
+	printf("\nVOF: %g\n",alpha_q);fflush(stdout);
 	
-	// scale velocities
+	// scale velocities ... 
+	//... of particles
 	P_VEL(p)[0] *= alpha_q;
 	P_VEL(p)[1] *= alpha_q;
 	P_VEL(p)[2] *= alpha_q;
-	 
+	
+	//... of cell fluid
 	C_U(c,t) *= alpha_q;
 	C_V(c,t) *= alpha_q;
 	C_W(c,t) *= alpha_q;	
