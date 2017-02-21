@@ -1,7 +1,7 @@
 #include "udf.h"
 
 /******************************************************************************
- Modify particle drag force as function of volume fraction of water in cell.  
+ Modify particle and cell velocity as function of volume of fluid in a cell.  
 ******************************************************************************/
 
 DEFINE_DPM_SCALAR_UPDATE(modify_drag_by_velocity, c, t, init,p)
