@@ -88,9 +88,9 @@ void adjust_particle( Tracked_Particle * p)
 	a = a/norm; b = b/norm; c = c/norm;
 	
 	// obtain velocity (u,v,w) 
-	real u = P_VEL(p)[0]; real v =P_VEL(p)[1]; real w = P_VEL(p)[2];
+	real u = P_VEL(p)[0]; real v = P_VEL(p)[1]; real w = P_VEL(p)[2];
 	
-	// compute velocity direction
+	// compute new velocity direction unit vector 
 	real vel_x = -(b*(a*v - b*u))/(pow(a,2) + pow(b,2) + pow(c,2)) - (c*(a*w - c*u))/(pow(a,2) +
 			pow(b,2) + pow(c,2)) - (a*(a*u + b*v + c*w))/(pow(a,2) + pow(b,2) + pow(c,2));
 	real vel_y = ((a*v - b*u)*(pow(a,2) + pow(c,2)))/(pow(a,3) + a*pow(b,2) + a*pow(c,2)) - 
@@ -98,7 +98,7 @@ void adjust_particle( Tracked_Particle * p)
 	real vel_z = ((a*w - c*u)*(pow(a,2) + pow(b,2)))/(pow(a,3) + a*pow(b,2) + a*pow(c,2)) - 
 		(c*(a*u + b*v + c*w))/(pow(a,2) + pow(b,2) + pow(c,2)) - (b*c*(a*v - b*u))/(pow(a,3) + a*pow(b,2) + a*pow(c,2));
 	
-	// compute cosine(theta) = <a,b>
+	// compute cosine(theta) = <v_dir,N>
 	real cos = (a*u + b*v + c*w);
 	
 	// scale velocity magnitudes by sin(theta) 
