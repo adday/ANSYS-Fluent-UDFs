@@ -4,7 +4,7 @@
  Modify particle and cell velocity as function of volume of fluid in a cell.  
 ******************************************************************************/
 
-DEFINE_DPM_SCALAR_UPDATE( modify_drag_by_velocity, c, t, init, p)
+DEFINE_DPM_SCALAR_UPDATE( modify_velocity_by_vof, c, t, init, p)
 {	
 	// obtain volume fraction of h20 for particle cell
 	c = P_CELL(p);
