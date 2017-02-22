@@ -14,24 +14,28 @@ DEFINE_DPM_SCALAR_UPDATE( adjust_particle_pos_vel, cell, thread, initialize, p)
 	// if particle in gas phase
 	if (P_POS(p)[1] > fluid_level)
 	{
-			printf("Particle in air. Position: %g Velocity: %g\n", P_POS(p)[1], P_VEL(p)[1]); fflush(stdout);
+		printf("Particle in air. Position: %g Velocity: %g\n", P_POS(p)[1], P_VEL(p)[1]); 
+		fflush(stdout);
 			
-			// adjust particle vertical position and velocity
-			P_POS(p)[1] = fluid_level;
-			P_VEL(p)[1] = vel_adjust * P_VEL(p)[1];
+		// adjust particle vertical position and velocity
+		P_POS(p)[1] = fluid_level;
+		P_VEL(p)[1] = vel_adjust * P_VEL(p)[1];
 			
-			printf("Particle adjusted. Position: %g Velocity: %g \n", P_POS(p)[1], P_VEL(p)[1]); fflush(stdout);
+		printf("Particle adjusted. Position: %g Velocity: %g \n", P_POS(p)[1], P_VEL(p)[1]); 
+		fflush(stdout);
 	}
 	
 	// if particle within fluid_thresh of gas phase and particle velocity greater than threshold
 	if ( (P_POS(p)[1] > (fluid_level - (fluid_level * fluid_thresh))) && (P_VEL(p)[1] > vel_thresh) )
 	{
-			printf("Particle close to air. Position: %g Velocity: %g \n", P_POS(p)[1], P_VEL(p)[1]); fflush(stdout);
+		printf("Particle close to air. Position: %g Velocity: %g \n", P_POS(p)[1], P_VEL(p)[1]); 
+		fflush(stdout);
 			
-			// adjust particle vertical position and velocity
-			P_VEL(p)[1] = vel_adjust * P_VEL(p)[1];
+		// adjust particle vertical position and velocity
+		P_VEL(p)[1] = vel_adjust * P_VEL(p)[1];
 			
-			printf("Particle adjusted. Position: %g Velocity: %g \n", P_POS(p)[1], P_VEL(p)[1]); fflush(stdout);
+		printf("Particle adjusted. Position: %g Velocity: %g \n", P_POS(p)[1], P_VEL(p)[1]); 
+		fflush(stdout);
 	}
 	
 }
