@@ -93,10 +93,8 @@ void adjust_particle( Tracked_Particle * p)
 		(b*(a*u + b*v + c*w))/(pow(a,2) + pow(b,2) + pow(c,2)) - (b*c*(a*w - c*u))/(pow(a,3) + a*pow(b,2) + a*pow(c,2));
 	real vel_z = ((a*w - c*u)*(pow(a,2) + pow(b,2)))/(pow(a,3) + a*pow(b,2) + a*pow(c,2)) - 
 		(c*(a*u + b*v + c*w))/(pow(a,2) + pow(b,2) + pow(c,2)) - (b*c*(a*v - b*u))/(pow(a,3) + a*pow(b,2) + a*pow(c,2));
-	
-	// cosine(theta) = <v_dir,N>
-	real cos = (a*u + b*v + c*w);
-	
+	real cos = (a*u + b*v + c*w);	// cosine(theta) = <v_dir,N>
+
 	// scale velocity by sin(theta) 
 	real sin = sqrt(1-pow(cos,2));
 	P_VEL(p)[0] = vel_x * sin;
