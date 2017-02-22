@@ -4,29 +4,27 @@
  Modify particle and cell velocity as function of volume of fluid in a cell.  
 ******************************************************************************/
 
-DEFINE_DPM_SCALAR_UPDATE(modify_drag_by_velocity, c, t, init,p)
-{
-	real alpha_q;
-	
-	// obtain volume fraction of water
+DEFINE_DPM_SCALAR_UPDATE( modify_drag_by_velocity, c, t, init, p)
+{	
+	// obtain volume fraction of h20 for particle cell
 	c = P_CELL(p);
-	
-	// thread dependent on simulation parameter (0- primary phase 1-secondary phase)
+	// thread parameter: 0 - primary phase, 1 - secondary phase)
 	t = THREAD_SUB_THREAD(P_CELL_THREAD(p),1);
-	alpha_q = C_VOF(c,t);
+	real VOF = C_VOF(c,t);
 
-	printf("\n VOF: %g \n", alpha_q); fflush(stdout);
+	printf("\n VOF: %g \n", VOF); 
+	fflush(stdout);
 	
 	// scale velocities ... 
 	//... of particles
-	P_VEL(p)[0] *= alpha_q;
-	P_VEL(p)[1] *= alpha_q;
-	P_VEL(p)[2] *= alpha_q;
+	P_VEL(p)[0] *= VOF;
+	P_VEL(p)[1] *= VOF;
+	P_VEL(p)[2] *= VOF;
 	
 	//... of cell fluid
-	C_U(c,t) *= alpha_q;
-	C_V(c,t) *= alpha_q;
-	C_W(c,t) *= alpha_q;	
+	C_U(c,t) *= VOF;
+	C_V(c,t) *= VOF;
+	C_W(c,t) *= VOF;	
 }
 
 
